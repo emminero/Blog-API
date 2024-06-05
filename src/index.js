@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 
 const { PORT, MONGODB_URI } = process.env;
+const uri = MONGODB_URI;
 const app = express();
 
 app.use(express.json());
@@ -16,7 +17,7 @@ app.use("/users", userRoutes);
 app.use("/blogs", blogRoutes);
 
 mongoose
-  .connect(MONGODB_URI, {
+  .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
